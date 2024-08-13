@@ -1,0 +1,411 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="io.github.bty834.mybatis3runtimegenerator.infra.mapper.LocalMessageMapper">
+  <resultMap id="BaseResultMap" type="io.github.bty834.mybatis3runtimegenerator.infra.model.LocalMessage">
+    <id column="id" jdbcType="BIGINT" property="id" />
+    <result column="number" jdbcType="BIGINT" property="number" />
+    <result column="topic" jdbcType="VARCHAR" property="topic" />
+    <result column="sharding_key" jdbcType="VARCHAR" property="shardingKey" />
+    <result column="msg_id" jdbcType="VARCHAR" property="msgId" />
+    <result column="send_status" jdbcType="TINYINT" property="sendStatus" />
+    <result column="retry_times" jdbcType="TINYINT" property="retryTimes" />
+    <result column="next_retry_time" jdbcType="TIMESTAMP" property="nextRetryTime" />
+    <result column="deleted" jdbcType="TINYINT" property="deleted" />
+    <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
+    <result column="update_time" jdbcType="TIMESTAMP" property="updateTime" />
+    <result column="cc2" jdbcType="VARCHAR" property="cc2" />
+    <result column="cc3" jdbcType="INTEGER" property="cc3" />
+  </resultMap>
+  <resultMap extends="BaseResultMap" id="ResultMapWithBLOBs" type="io.github.bty834.mybatis3runtimegenerator.infra.model.LocalMessage">
+    <result column="content" jdbcType="LONGVARCHAR" property="content" />
+  </resultMap>
+  <sql id="Example_Where_Clause">
+    <where>
+      <foreach collection="oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause">
+    <where>
+      <foreach collection="example.oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List">
+    id, number, topic, sharding_key, msg_id, send_status, retry_times, next_retry_time, 
+    deleted, create_time, update_time, cc2, cc3
+  </sql>
+  <sql id="Blob_Column_List">
+    content
+  </sql>
+  <select id="selectByExampleWithBLOBs" parameterType="io.github.bty834.mybatis3runtimegenerator.infra.model.LocalMessageExample" resultMap="ResultMapWithBLOBs">
+    select
+    <if test="distinct">
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    ,
+    <include refid="Blob_Column_List" />
+    from local_message
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null">
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByExample" parameterType="io.github.bty834.mybatis3runtimegenerator.infra.model.LocalMessageExample" resultMap="BaseResultMap">
+    select
+    <if test="distinct">
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from local_message
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null">
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="ResultMapWithBLOBs">
+    select 
+    <include refid="Base_Column_List" />
+    ,
+    <include refid="Blob_Column_List" />
+    from local_message
+    where id = #{id,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+    delete from local_message
+    where id = #{id,jdbcType=BIGINT}
+  </delete>
+  <delete id="deleteByExample" parameterType="io.github.bty834.mybatis3runtimegenerator.infra.model.LocalMessageExample">
+    delete from local_message
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="io.github.bty834.mybatis3runtimegenerator.infra.model.LocalMessage">
+    insert into local_message (id, number, topic, 
+      sharding_key, msg_id, send_status, 
+      retry_times, next_retry_time, deleted, 
+      create_time, update_time, cc2, 
+      cc3, content)
+    values (#{id,jdbcType=BIGINT}, #{number,jdbcType=BIGINT}, #{topic,jdbcType=VARCHAR}, 
+      #{shardingKey,jdbcType=VARCHAR}, #{msgId,jdbcType=VARCHAR}, #{sendStatus,jdbcType=TINYINT}, 
+      #{retryTimes,jdbcType=TINYINT}, #{nextRetryTime,jdbcType=TIMESTAMP}, #{deleted,jdbcType=TINYINT}, 
+      #{createTime,jdbcType=TIMESTAMP}, #{updateTime,jdbcType=TIMESTAMP}, #{cc2,jdbcType=VARCHAR}, 
+      #{cc3,jdbcType=INTEGER}, #{content,jdbcType=LONGVARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="io.github.bty834.mybatis3runtimegenerator.infra.model.LocalMessage">
+    insert into local_message
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="number != null">
+        number,
+      </if>
+      <if test="topic != null">
+        topic,
+      </if>
+      <if test="shardingKey != null">
+        sharding_key,
+      </if>
+      <if test="msgId != null">
+        msg_id,
+      </if>
+      <if test="sendStatus != null">
+        send_status,
+      </if>
+      <if test="retryTimes != null">
+        retry_times,
+      </if>
+      <if test="nextRetryTime != null">
+        next_retry_time,
+      </if>
+      <if test="deleted != null">
+        deleted,
+      </if>
+      <if test="createTime != null">
+        create_time,
+      </if>
+      <if test="updateTime != null">
+        update_time,
+      </if>
+      <if test="cc2 != null">
+        cc2,
+      </if>
+      <if test="cc3 != null">
+        cc3,
+      </if>
+      <if test="content != null">
+        content,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=BIGINT},
+      </if>
+      <if test="number != null">
+        #{number,jdbcType=BIGINT},
+      </if>
+      <if test="topic != null">
+        #{topic,jdbcType=VARCHAR},
+      </if>
+      <if test="shardingKey != null">
+        #{shardingKey,jdbcType=VARCHAR},
+      </if>
+      <if test="msgId != null">
+        #{msgId,jdbcType=VARCHAR},
+      </if>
+      <if test="sendStatus != null">
+        #{sendStatus,jdbcType=TINYINT},
+      </if>
+      <if test="retryTimes != null">
+        #{retryTimes,jdbcType=TINYINT},
+      </if>
+      <if test="nextRetryTime != null">
+        #{nextRetryTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="deleted != null">
+        #{deleted,jdbcType=TINYINT},
+      </if>
+      <if test="createTime != null">
+        #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateTime != null">
+        #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="cc2 != null">
+        #{cc2,jdbcType=VARCHAR},
+      </if>
+      <if test="cc3 != null">
+        #{cc3,jdbcType=INTEGER},
+      </if>
+      <if test="content != null">
+        #{content,jdbcType=LONGVARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="io.github.bty834.mybatis3runtimegenerator.infra.model.LocalMessageExample" resultType="java.lang.Long">
+    select count(*) from local_message
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map">
+    update local_message
+    <set>
+      <if test="row.id != null">
+        id = #{row.id,jdbcType=BIGINT},
+      </if>
+      <if test="row.number != null">
+        number = #{row.number,jdbcType=BIGINT},
+      </if>
+      <if test="row.topic != null">
+        topic = #{row.topic,jdbcType=VARCHAR},
+      </if>
+      <if test="row.shardingKey != null">
+        sharding_key = #{row.shardingKey,jdbcType=VARCHAR},
+      </if>
+      <if test="row.msgId != null">
+        msg_id = #{row.msgId,jdbcType=VARCHAR},
+      </if>
+      <if test="row.sendStatus != null">
+        send_status = #{row.sendStatus,jdbcType=TINYINT},
+      </if>
+      <if test="row.retryTimes != null">
+        retry_times = #{row.retryTimes,jdbcType=TINYINT},
+      </if>
+      <if test="row.nextRetryTime != null">
+        next_retry_time = #{row.nextRetryTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="row.deleted != null">
+        deleted = #{row.deleted,jdbcType=TINYINT},
+      </if>
+      <if test="row.createTime != null">
+        create_time = #{row.createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="row.updateTime != null">
+        update_time = #{row.updateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="row.cc2 != null">
+        cc2 = #{row.cc2,jdbcType=VARCHAR},
+      </if>
+      <if test="row.cc3 != null">
+        cc3 = #{row.cc3,jdbcType=INTEGER},
+      </if>
+      <if test="row.content != null">
+        content = #{row.content,jdbcType=LONGVARCHAR},
+      </if>
+    </set>
+    <if test="example != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExampleWithBLOBs" parameterType="map">
+    update local_message
+    set id = #{row.id,jdbcType=BIGINT},
+      number = #{row.number,jdbcType=BIGINT},
+      topic = #{row.topic,jdbcType=VARCHAR},
+      sharding_key = #{row.shardingKey,jdbcType=VARCHAR},
+      msg_id = #{row.msgId,jdbcType=VARCHAR},
+      send_status = #{row.sendStatus,jdbcType=TINYINT},
+      retry_times = #{row.retryTimes,jdbcType=TINYINT},
+      next_retry_time = #{row.nextRetryTime,jdbcType=TIMESTAMP},
+      deleted = #{row.deleted,jdbcType=TINYINT},
+      create_time = #{row.createTime,jdbcType=TIMESTAMP},
+      update_time = #{row.updateTime,jdbcType=TIMESTAMP},
+      cc2 = #{row.cc2,jdbcType=VARCHAR},
+      cc3 = #{row.cc3,jdbcType=INTEGER},
+      content = #{row.content,jdbcType=LONGVARCHAR}
+    <if test="example != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map">
+    update local_message
+    set id = #{row.id,jdbcType=BIGINT},
+      number = #{row.number,jdbcType=BIGINT},
+      topic = #{row.topic,jdbcType=VARCHAR},
+      sharding_key = #{row.shardingKey,jdbcType=VARCHAR},
+      msg_id = #{row.msgId,jdbcType=VARCHAR},
+      send_status = #{row.sendStatus,jdbcType=TINYINT},
+      retry_times = #{row.retryTimes,jdbcType=TINYINT},
+      next_retry_time = #{row.nextRetryTime,jdbcType=TIMESTAMP},
+      deleted = #{row.deleted,jdbcType=TINYINT},
+      create_time = #{row.createTime,jdbcType=TIMESTAMP},
+      update_time = #{row.updateTime,jdbcType=TIMESTAMP},
+      cc2 = #{row.cc2,jdbcType=VARCHAR},
+      cc3 = #{row.cc3,jdbcType=INTEGER}
+    <if test="example != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="io.github.bty834.mybatis3runtimegenerator.infra.model.LocalMessage">
+    update local_message
+    <set>
+      <if test="number != null">
+        number = #{number,jdbcType=BIGINT},
+      </if>
+      <if test="topic != null">
+        topic = #{topic,jdbcType=VARCHAR},
+      </if>
+      <if test="shardingKey != null">
+        sharding_key = #{shardingKey,jdbcType=VARCHAR},
+      </if>
+      <if test="msgId != null">
+        msg_id = #{msgId,jdbcType=VARCHAR},
+      </if>
+      <if test="sendStatus != null">
+        send_status = #{sendStatus,jdbcType=TINYINT},
+      </if>
+      <if test="retryTimes != null">
+        retry_times = #{retryTimes,jdbcType=TINYINT},
+      </if>
+      <if test="nextRetryTime != null">
+        next_retry_time = #{nextRetryTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="deleted != null">
+        deleted = #{deleted,jdbcType=TINYINT},
+      </if>
+      <if test="createTime != null">
+        create_time = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateTime != null">
+        update_time = #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="cc2 != null">
+        cc2 = #{cc2,jdbcType=VARCHAR},
+      </if>
+      <if test="cc3 != null">
+        cc3 = #{cc3,jdbcType=INTEGER},
+      </if>
+      <if test="content != null">
+        content = #{content,jdbcType=LONGVARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKeyWithBLOBs" parameterType="io.github.bty834.mybatis3runtimegenerator.infra.model.LocalMessage">
+    update local_message
+    set number = #{number,jdbcType=BIGINT},
+      topic = #{topic,jdbcType=VARCHAR},
+      sharding_key = #{shardingKey,jdbcType=VARCHAR},
+      msg_id = #{msgId,jdbcType=VARCHAR},
+      send_status = #{sendStatus,jdbcType=TINYINT},
+      retry_times = #{retryTimes,jdbcType=TINYINT},
+      next_retry_time = #{nextRetryTime,jdbcType=TIMESTAMP},
+      deleted = #{deleted,jdbcType=TINYINT},
+      create_time = #{createTime,jdbcType=TIMESTAMP},
+      update_time = #{updateTime,jdbcType=TIMESTAMP},
+      cc2 = #{cc2,jdbcType=VARCHAR},
+      cc3 = #{cc3,jdbcType=INTEGER},
+      content = #{content,jdbcType=LONGVARCHAR}
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="io.github.bty834.mybatis3runtimegenerator.infra.model.LocalMessage">
+    update local_message
+    set number = #{number,jdbcType=BIGINT},
+      topic = #{topic,jdbcType=VARCHAR},
+      sharding_key = #{shardingKey,jdbcType=VARCHAR},
+      msg_id = #{msgId,jdbcType=VARCHAR},
+      send_status = #{sendStatus,jdbcType=TINYINT},
+      retry_times = #{retryTimes,jdbcType=TINYINT},
+      next_retry_time = #{nextRetryTime,jdbcType=TIMESTAMP},
+      deleted = #{deleted,jdbcType=TINYINT},
+      create_time = #{createTime,jdbcType=TIMESTAMP},
+      update_time = #{updateTime,jdbcType=TIMESTAMP},
+      cc2 = #{cc2,jdbcType=VARCHAR},
+      cc3 = #{cc3,jdbcType=INTEGER}
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+</mapper>
