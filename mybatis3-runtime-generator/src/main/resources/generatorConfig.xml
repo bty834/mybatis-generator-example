@@ -7,6 +7,16 @@
         <!--定义生成的java类的编码格式-->
         <property name="javaFileEncoding" value="UTF-8"/>
 
+        <!-- 插件     -->
+        <plugin type="org.mybatis.generator.plugins.SerializablePlugin"/>
+        <plugin type="io.github.bty834.mybatisplugindev.ModelNameSuffixPlugin">
+            <property name="suffix" value="DO"/>
+            <property name="excludeTables" value="skip_table1,skip_table2"/>
+        </plugin>
+        <plugin type="io.github.bty834.mybatisplugindev.LombokDataPlugin"/>
+        <plugin type="io.github.bty834.mybatisplugindev.DisableDeletePlugin"/>
+        <plugin type="io.github.bty834.mybatisplugindev.Date2LocalDateTimePlugin"/>
+
         <!--suppressAllComments 设置为true 则不再生成注释-->
         <commentGenerator>
             <property name="suppressAllComments" value="true" />
@@ -18,9 +28,33 @@
                         password="12345678"/>
 
 
-        <javaModelGenerator targetPackage="io.github.bty834.mybatis3runtimegenerator.infra.model" targetProject="src/main/java"/>
-        <sqlMapGenerator targetPackage="mapper" targetProject="src/main/resources"/>
-        <javaClientGenerator type="XMLMAPPER" targetPackage="io.github.bty834.mybatis3runtimegenerator.infra.mapper" targetProject="src/main/java"/>
-        <table tableName="local_message" />
+        <javaModelGenerator targetPackage="io.github.bty834.mybatis3runtimegenerator.infra.model"
+                            targetProject="src/main/java">
+            <property name="enableSubPackages" value="true" />
+            <property name="trimStrings" value="true" />
+        </javaModelGenerator>
+
+
+        <sqlMapGenerator targetPackage="mapper" targetProject="src/main/resources">
+            <property name="enableSubPackages" value="true" />
+        </sqlMapGenerator>
+
+
+
+        <javaClientGenerator type="XMLMAPPER"
+                             targetPackage="io.github.bty834.mybatis3runtimegenerator.infra.mapper"
+                             targetProject="src/main/java">
+            <property name="enableSubPackages" value="true"/>
+        </javaClientGenerator>
+
+
+        <table tableName="local_message" >
+            <!--  去掉blob          -->
+            <columnOverride column="content" javaType="java.lang.String" jdbcType="VARCHAR"/>
+            <columnOverride column="deleted" javaType="Boolean"/>
+        </table>
+
+
+
     </context>
 </generatorConfiguration>

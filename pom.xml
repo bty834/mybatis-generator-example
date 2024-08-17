@@ -13,7 +13,6 @@
     <modules>
         <module>mybatis3-runtime-generator</module>
         <module>mybatis3dynamicsql-runtime-generator</module>
-        <module>mybatis-plugin-dev</module>
     </modules>
     <properties>
         <java.version>1.8</java.version>

@@ -1,18 +1,18 @@
 package io.github.bty834.mybatis3runtimegenerator.infra.model;
 
+import java.time.LocalDateTime;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 
-public class LocalMessageExample {
+public class LocalMessageDOExample {
     protected String orderByClause;
 
     protected boolean distinct;
 
     protected List<Criteria> oredCriteria;
 
-    public LocalMessageExample() {
-        oredCriteria = new ArrayList<>();
+    public LocalMessageDOExample() {
+        oredCriteria = new ArrayList<Criteria>();
     }
 
     public void setOrderByClause(String orderByClause) {
@@ -69,7 +69,7 @@ public class LocalMessageExample {
 
         protected GeneratedCriteria() {
             super();
-            criteria = new ArrayList<>();
+            criteria = new ArrayList<Criterion>();
         }
 
         public boolean isValid() {
@@ -495,6 +495,76 @@ public class LocalMessageExample {
             return (Criteria) this;
         }
 
+        public Criteria andContentIsNull() {
+            addCriterion("content is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andContentIsNotNull() {
+            addCriterion("content is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andContentEqualTo(String value) {
+            addCriterion("content =", value, "content");
+            return (Criteria) this;
+        }
+
+        public Criteria andContentNotEqualTo(String value) {
+            addCriterion("content <>", value, "content");
+            return (Criteria) this;
+        }
+
+        public Criteria andContentGreaterThan(String value) {
+            addCriterion("content >", value, "content");
+            return (Criteria) this;
+        }
+
+        public Criteria andContentGreaterThanOrEqualTo(String value) {
+            addCriterion("content >=", value, "content");
+            return (Criteria) this;
+        }
+
+        public Criteria andContentLessThan(String value) {
+            addCriterion("content <", value, "content");
+            return (Criteria) this;
+        }
+
+        public Criteria andContentLessThanOrEqualTo(String value) {
+            addCriterion("content <=", value, "content");
+            return (Criteria) this;
+        }
+
+        public Criteria andContentLike(String value) {
+            addCriterion("content like", value, "content");
+            return (Criteria) this;
+        }
+
+        public Criteria andContentNotLike(String value) {
+            addCriterion("content not like", value, "content");
+            return (Criteria) this;
+        }
+
+        public Criteria andContentIn(List<String> values) {
+            addCriterion("content in", values, "content");
+            return (Criteria) this;
+        }
+
+        public Criteria andContentNotIn(List<String> values) {
+            addCriterion("content not in", values, "content");
+            return (Criteria) this;
+        }
+
+        public Criteria andContentBetween(String value1, String value2) {
+            addCriterion("content between", value1, value2, "content");
+            return (Criteria) this;
+        }
+
+        public Criteria andContentNotBetween(String value1, String value2) {
+            addCriterion("content not between", value1, value2, "content");
+            return (Criteria) this;
+        }
+
         public Criteria andRetryTimesIsNull() {
             addCriterion("retry_times is null");
             return (Criteria) this;
@@ -565,52 +635,52 @@ public class LocalMessageExample {
             return (Criteria) this;
         }
 
-        public Criteria andNextRetryTimeEqualTo(Date value) {
+        public Criteria andNextRetryTimeEqualTo(LocalDateTime value) {
             addCriterion("next_retry_time =", value, "nextRetryTime");
             return (Criteria) this;
         }
 
-        public Criteria andNextRetryTimeNotEqualTo(Date value) {
+        public Criteria andNextRetryTimeNotEqualTo(LocalDateTime value) {
             addCriterion("next_retry_time <>", value, "nextRetryTime");
             return (Criteria) this;
         }
 
-        public Criteria andNextRetryTimeGreaterThan(Date value) {
+        public Criteria andNextRetryTimeGreaterThan(LocalDateTime value) {
             addCriterion("next_retry_time >", value, "nextRetryTime");
             return (Criteria) this;
         }
 
-        public Criteria andNextRetryTimeGreaterThanOrEqualTo(Date value) {
+        public Criteria andNextRetryTimeGreaterThanOrEqualTo(LocalDateTime value) {
             addCriterion("next_retry_time >=", value, "nextRetryTime");
             return (Criteria) this;
         }
 
-        public Criteria andNextRetryTimeLessThan(Date value) {
+        public Criteria andNextRetryTimeLessThan(LocalDateTime value) {
             addCriterion("next_retry_time <", value, "nextRetryTime");
             return (Criteria) this;
         }
 
-        public Criteria andNextRetryTimeLessThanOrEqualTo(Date value) {
+        public Criteria andNextRetryTimeLessThanOrEqualTo(LocalDateTime value) {
             addCriterion("next_retry_time <=", value, "nextRetryTime");
             return (Criteria) this;
         }
 
-        public Criteria andNextRetryTimeIn(List<Date> values) {
+        public Criteria andNextRetryTimeIn(List<LocalDateTime> values) {
             addCriterion("next_retry_time in", values, "nextRetryTime");
             return (Criteria) this;
         }
 
-        public Criteria andNextRetryTimeNotIn(List<Date> values) {
+        public Criteria andNextRetryTimeNotIn(List<LocalDateTime> values) {
             addCriterion("next_retry_time not in", values, "nextRetryTime");
             return (Criteria) this;
         }
 
-        public Criteria andNextRetryTimeBetween(Date value1, Date value2) {
+        public Criteria andNextRetryTimeBetween(LocalDateTime value1, LocalDateTime value2) {
             addCriterion("next_retry_time between", value1, value2, "nextRetryTime");
             return (Criteria) this;
         }
 
-        public Criteria andNextRetryTimeNotBetween(Date value1, Date value2) {
+        public Criteria andNextRetryTimeNotBetween(LocalDateTime value1, LocalDateTime value2) {
             addCriterion("next_retry_time not between", value1, value2, "nextRetryTime");
             return (Criteria) this;
         }
@@ -625,52 +695,52 @@ public class LocalMessageExample {
             return (Criteria) this;
         }
 
-        public Criteria andDeletedEqualTo(Byte value) {
+        public Criteria andDeletedEqualTo(Boolean value) {
             addCriterion("deleted =", value, "deleted");
             return (Criteria) this;
         }
 
-        public Criteria andDeletedNotEqualTo(Byte value) {
+        public Criteria andDeletedNotEqualTo(Boolean value) {
             addCriterion("deleted <>", value, "deleted");
             return (Criteria) this;
         }
 
-        public Criteria andDeletedGreaterThan(Byte value) {
+        public Criteria andDeletedGreaterThan(Boolean value) {
             addCriterion("deleted >", value, "deleted");
             return (Criteria) this;
         }
 
-        public Criteria andDeletedGreaterThanOrEqualTo(Byte value) {
+        public Criteria andDeletedGreaterThanOrEqualTo(Boolean value) {
             addCriterion("deleted >=", value, "deleted");
             return (Criteria) this;
         }
 
-        public Criteria andDeletedLessThan(Byte value) {
+        public Criteria andDeletedLessThan(Boolean value) {
             addCriterion("deleted <", value, "deleted");
             return (Criteria) this;
         }
 
-        public Criteria andDeletedLessThanOrEqualTo(Byte value) {
+        public Criteria andDeletedLessThanOrEqualTo(Boolean value) {
             addCriterion("deleted <=", value, "deleted");
             return (Criteria) this;
         }
 
-        public Criteria andDeletedIn(List<Byte> values) {
+        public Criteria andDeletedIn(List<Boolean> values) {
             addCriterion("deleted in", values, "deleted");
             return (Criteria) this;
         }
 
-        public Criteria andDeletedNotIn(List<Byte> values) {
+        public Criteria andDeletedNotIn(List<Boolean> values) {
             addCriterion("deleted not in", values, "deleted");
             return (Criteria) this;
         }
 
-        public Criteria andDeletedBetween(Byte value1, Byte value2) {
+        public Criteria andDeletedBetween(Boolean value1, Boolean value2) {
             addCriterion("deleted between", value1, value2, "deleted");
             return (Criteria) this;
         }
 
-        public Criteria andDeletedNotBetween(Byte value1, Byte value2) {
+        public Criteria andDeletedNotBetween(Boolean value1, Boolean value2) {
             addCriterion("deleted not between", value1, value2, "deleted");
             return (Criteria) this;
         }
@@ -685,52 +755,52 @@ public class LocalMessageExample {
             return (Criteria) this;
         }
 
-        public Criteria andCreateTimeEqualTo(Date value) {
+        public Criteria andCreateTimeEqualTo(LocalDateTime value) {
             addCriterion("create_time =", value, "createTime");
             return (Criteria) this;
         }
 
-        public Criteria andCreateTimeNotEqualTo(Date value) {
+        public Criteria andCreateTimeNotEqualTo(LocalDateTime value) {
             addCriterion("create_time <>", value, "createTime");
             return (Criteria) this;
         }
 
-        public Criteria andCreateTimeGreaterThan(Date value) {
+        public Criteria andCreateTimeGreaterThan(LocalDateTime value) {
             addCriterion("create_time >", value, "createTime");
             return (Criteria) this;
         }
 
-        public Criteria andCreateTimeGreaterThanOrEqualTo(Date value) {
+        public Criteria andCreateTimeGreaterThanOrEqualTo(LocalDateTime value) {
             addCriterion("create_time >=", value, "createTime");
             return (Criteria) this;
         }
 
-        public Criteria andCreateTimeLessThan(Date value) {
+        public Criteria andCreateTimeLessThan(LocalDateTime value) {
             addCriterion("create_time <", value, "createTime");
             return (Criteria) this;
         }
 
-        public Criteria andCreateTimeLessThanOrEqualTo(Date value) {
+        public Criteria andCreateTimeLessThanOrEqualTo(LocalDateTime value) {
             addCriterion("create_time <=", value, "createTime");
             return (Criteria) this;
         }
 
-        public Criteria andCreateTimeIn(List<Date> values) {
+        public Criteria andCreateTimeIn(List<LocalDateTime> values) {
             addCriterion("create_time in", values, "createTime");
             return (Criteria) this;
         }
 
-        public Criteria andCreateTimeNotIn(List<Date> values) {
+        public Criteria andCreateTimeNotIn(List<LocalDateTime> values) {
             addCriterion("create_time not in", values, "createTime");
             return (Criteria) this;
         }
 
-        public Criteria andCreateTimeBetween(Date value1, Date value2) {
+        public Criteria andCreateTimeBetween(LocalDateTime value1, LocalDateTime value2) {
             addCriterion("create_time between", value1, value2, "createTime");
             return (Criteria) this;
         }
 
-        public Criteria andCreateTimeNotBetween(Date value1, Date value2) {
+        public Criteria andCreateTimeNotBetween(LocalDateTime value1, LocalDateTime value2) {
             addCriterion("create_time not between", value1, value2, "createTime");
             return (Criteria) this;
         }
@@ -745,52 +815,52 @@ public class LocalMessageExample {
             return (Criteria) this;
         }
 
-        public Criteria andUpdateTimeEqualTo(Date value) {
+        public Criteria andUpdateTimeEqualTo(LocalDateTime value) {
             addCriterion("update_time =", value, "updateTime");
             return (Criteria) this;
         }
 
-        public Criteria andUpdateTimeNotEqualTo(Date value) {
+        public Criteria andUpdateTimeNotEqualTo(LocalDateTime value) {
             addCriterion("update_time <>", value, "updateTime");
             return (Criteria) this;
         }
 
-        public Criteria andUpdateTimeGreaterThan(Date value) {
+        public Criteria andUpdateTimeGreaterThan(LocalDateTime value) {
             addCriterion("update_time >", value, "updateTime");
             return (Criteria) this;
         }
 
-        public Criteria andUpdateTimeGreaterThanOrEqualTo(Date value) {
+        public Criteria andUpdateTimeGreaterThanOrEqualTo(LocalDateTime value) {
             addCriterion("update_time >=", value, "updateTime");
             return (Criteria) this;
         }
 
-        public Criteria andUpdateTimeLessThan(Date value) {
+        public Criteria andUpdateTimeLessThan(LocalDateTime value) {
             addCriterion("update_time <", value, "updateTime");
             return (Criteria) this;
         }
 
-        public Criteria andUpdateTimeLessThanOrEqualTo(Date value) {
+        public Criteria andUpdateTimeLessThanOrEqualTo(LocalDateTime value) {
             addCriterion("update_time <=", value, "updateTime");
             return (Criteria) this;
         }
 
-        public Criteria andUpdateTimeIn(List<Date> values) {
+        public Criteria andUpdateTimeIn(List<LocalDateTime> values) {
             addCriterion("update_time in", values, "updateTime");
             return (Criteria) this;
         }
 
-        public Criteria andUpdateTimeNotIn(List<Date> values) {
+        public Criteria andUpdateTimeNotIn(List<LocalDateTime> values) {
             addCriterion("update_time not in", values, "updateTime");
             return (Criteria) this;
         }
 
-        public Criteria andUpdateTimeBetween(Date value1, Date value2) {
+        public Criteria andUpdateTimeBetween(LocalDateTime value1, LocalDateTime value2) {
             addCriterion("update_time between", value1, value2, "updateTime");
             return (Criteria) this;
         }
 
-        public Criteria andUpdateTimeNotBetween(Date value1, Date value2) {
+        public Criteria andUpdateTimeNotBetween(LocalDateTime value1, LocalDateTime value2) {
             addCriterion("update_time not between", value1, value2, "updateTime");
             return (Criteria) this;
         }
@@ -927,6 +997,7 @@ public class LocalMessageExample {
     }
 
     public static class Criteria extends GeneratedCriteria {
+
         protected Criteria() {
             super();
         }
